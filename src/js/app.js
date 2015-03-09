@@ -1,4 +1,4 @@
-require(['jquery', 'vex', 'lib/spin'], function($, vex, spin) {
+require(['jquery', 'lib/spin', 'backbone', 'collections/people', 'lib/router'], function($, spin, Backbone, People, Router) {
 
   'use strict';
 
@@ -6,7 +6,15 @@ require(['jquery', 'vex', 'lib/spin'], function($, vex, spin) {
     // spin.spin();
 
     // Load the data
-    // $.getJSON('data/data.json', function(d) {});
+    $.getJSON('data/data.json', function(d) {
+
+      new Router({
+        people: new People(d)
+      });
+
+      Backbone.history.start();
+
+    });
 
     /*
     vex.defaultOptions: {
@@ -25,25 +33,6 @@ require(['jquery', 'vex', 'lib/spin'], function($, vex, spin) {
       closeCSS: {}
     };
     */
-
-    vex.defaultOptions.className = 'vex-theme-plain';
-
-    $('.grid-item').on('click', openDialog);
-
-    function openDialog(e) {
-      e.preventDefault();
-      vex.open({
-        content: '<div>Content</div>',
-        /*
-        afterOpen: function($vexContent) {
-          return $vexContent.append($el);
-        },
-        afterClose: function() {
-          return console.log('vexClose');
-        }
-        */
-      });
-    }
 
   });
 

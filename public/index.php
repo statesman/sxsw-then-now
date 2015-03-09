@@ -76,12 +76,14 @@
     ?>
     <div id="grid">
       <?php foreach ($data as $datum): ?>
-        <div class="grid-item">
-          <img class="img-responsive" src="assets/grid/<?php print $datum['slug']; ?>-400x267.JPG" />
-          <div class="overlay">
-            <h2><?php print $datum['name']; ?></h2>
+        <a href="#/<?php print $datum['slug'] ;?>">
+          <div class="grid-item">
+            <img class="img-responsive" src="assets/grid/<?php print $datum['slug']; ?>-400x267.JPG" />
+            <div class="overlay">
+              <h2><?php print $datum['name']; ?></h2>
+            </div>
           </div>
-        </div>
+        </a>
       <?php endforeach; ?>
     </div>
 
