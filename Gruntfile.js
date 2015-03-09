@@ -118,8 +118,8 @@ module.exports = function(grunt) {
       grid: {
         options: {
           sizes: [{
-            width: 400,
-            height: 267,
+            width: 450,
+            height: 300,
             aspectRatio: false
           }]
         },

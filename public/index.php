@@ -68,17 +68,15 @@
       </div>
     </nav>
 
-    <div id="spin" style="position:fixed;top:50%;left:50%;z-index:10000"></div>
-
     <?php
       $string = file_get_contents("data/data.json");
       $data = json_decode($string, true);
     ?>
-    <div id="grid">
+    <div id="grid" class="clearfix">
       <?php foreach ($data as $datum): ?>
         <div class="grid-item">
           <a class="hidden-xs" href="#/<?php print $datum['slug'] ;?>">
-            <img class="img-responsive" src="assets/grid/<?php print $datum['photo']; ?>-400x267.JPG" />
+            <img width="450" height="300" class="img-responsive" src="assets/grid/<?php print $datum['photo']; ?>-450x300.JPG" />
             <div class="overlay">
               <h2><?php print $datum['name']; ?></h2>
             </div>
@@ -110,6 +108,7 @@
       </div>
     </div>
 
+    <div style="display:none;">
     <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
         <filter id="greyscale">
         <feColorMatrix type="matrix" values="0.3333 0.3333 0.3333 0 0
@@ -118,6 +117,7 @@
                                               0      0      0      1 0"/>
         </filter>
     </svg>
+    </div>
 
     <p id="legal" class="center-block text-center"><small>© <?php print date("Y"); ?> <a href="http://www.coxmediagroup.com" target="_blank">Cox Media Group</a>. By using this website, you accept the terms of our <a href="http://www.mystatesman.com/visitor_agreement/" target="_blank">Visitor Agreement</a> and <a target="_blank" href="http://www.mystatesman.com/privacy_policy/">Privacy Policy</a>, and understand your options regarding <a target="_blank" href="http://www.mystatesman.com/privacy_policy/#ad-choices">Ad Choices</a><img src="http://media.cmgdigital.com/shared/img/photos/2012/02/29/d3/da/ad_choices_logo.png" alt="AdChoices">.</small></p>
 

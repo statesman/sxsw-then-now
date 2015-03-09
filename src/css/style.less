@@ -17,11 +17,20 @@
 @import (inline) '../../bower_components/vex/css/vex.css';
 @import 'vex-theme.less';
 
+// Variables
+@grid-photo-width: 450px;
+
 @media (min-width: @screen-sm-min) {
   .navbar.navbar-default {
     border-color: #ddd;
     .box-shadow(0 0 13px rgba(0,0,0,0.1));
   }
+}
+
+// Don't allow window to be sized to the point that the
+// photo grid has gaps
+body {
+  max-width: @grid-photo-width * 4;
 }
 
 // Prevent jumpming when the modal is opened

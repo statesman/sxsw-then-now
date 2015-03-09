@@ -4,6 +4,7 @@ require(['jquery', 'vex'], function($, vex) {
 
   $(function() {
     vex.defaultOptions.className = 'vex-theme-plain';
+    vex.defaultOptions.contentClassName = 'vignette';
 
     $('.grid-item').on('click', '.hidden-xs', modal);
 
