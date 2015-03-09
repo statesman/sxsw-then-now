@@ -85,7 +85,7 @@
           </a>
           <div class="vignette">
             <img class="img-responsive" src="assets/now/<?php print $datum['photo']; ?>-800.jpg" />
-            <h2><?php print $datum['name']; ?></h2>
+            <h1><?php print $datum['name']; ?></h1>
             <p class="author">By <?php print $datum['author']; ?>
             <p><?php print $datum['vignette']; ?>
           </div>

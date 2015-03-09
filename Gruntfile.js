@@ -12,30 +12,6 @@ module.exports = function(grunt) {
       fonts: ["public/fonts/**"]
     },
 
-    // Pre-render Handlebars templates
-    handlebars: {
-      options: {
-        // Returns the filename, with its parent directory if
-        // it's in a subdirectory of the src/templates folder
-        processName: function(filePath) {
-          var path = filePath.toLowerCase(),
-              pieces = path.split("/"),
-              name = '';
-          if(pieces[pieces.length - 2] !== 'templates') {
-            name = name + pieces[pieces.length - 2];
-          }
-          name = name + pieces[pieces.length - 1];
-          return name.split(".")[0];
-        },
-        amd: true
-      },
-      compile: {
-        files: {
-          'build/templates.js': ['src/templates/**/*.hbs']
-        }
-      }
-    },
-
     // Copy FontAwesome files to the fonts/ directory
     copy: {
       fonts: {
@@ -105,11 +81,7 @@ module.exports = function(grunt) {
       },
       styles: {
         files: ['src/css/**.less'],
-        tasks: ['clean:css', 'copy:vex', 'less']
-      },
-      templates: {
-        files: ['src/templates/**/*.hbs'],
-        tasks: ['clean:js', 'handlebars', 'requirejs']
+        tasks: ['clean:css', 'less']
       }
     },
 
@@ -192,7 +164,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-requirejs');
-  grunt.loadNpmTasks('grunt-contrib-handlebars');
   grunt.loadNpmTasks('grunt-ftpush');
   grunt.loadNpmTasks('grunt-responsive-images');
 
@@ -226,6 +197,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build:images', ['clean:images', 'responsive_images'])
 
-  grunt.registerTask('default', ['jshint', 'clean:css', 'clean:js', 'clean:fonts', 'archieml', 'copy', 'less', 'handlebars', 'requirejs']);
+  grunt.registerTask('default', ['jshint', 'clean:css', 'clean:js', 'clean:fonts', 'archieml', 'copy', 'less', 'requirejs']);
 
 };

@@ -1,39 +1,19 @@
-require(['jquery', 'lib/spin', 'backbone', 'collections/people', 'lib/router'], function($, spin, Backbone, People, Router) {
+require(['jquery', 'vex'], function($, vex) {
 
   'use strict';
 
   $(function() {
-    // spin.spin();
+    vex.defaultOptions.className = 'vex-theme-plain';
 
-    // Load the data
-    $.getJSON('data/data.json', function(d) {
+    $('.grid-item').on('click', '.hidden-xs', modal);
 
-      new Router({
-        people: new People(d)
+    function modal(e) {
+      var content = $(e.target).closest('.grid-item').find('.vignette').html();
+
+      vex.open({
+        content: content
       });
-
-      Backbone.history.start();
-
-    });
-
-    /*
-    vex.defaultOptions: {
-      content: '',
-      showCloseButton: true,
-      escapeButtonCloses: true,
-      overlayClosesOnClick: true,
-      appendLocation: 'body',
-      className: '',
-      css: {},
-      overlayClassName: '',
-      overlayCSS: {},
-      contentClassName: '',
-      contentCSS: {},
-      closeClassName: '',
-      closeCSS: {}
-    };
-    */
-
+    }
   });
 
 });

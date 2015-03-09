@@ -11,18 +11,22 @@
 @import 'footer.less';
 @import 'type.less';
 @import 'grid.less';
+@import 'vignettes.less';
+
+// Vex styles
 @import (inline) '../../bower_components/vex/css/vex.css';
 @import 'vex-theme.less';
-
-body {
-  overflow: hidden;
-}
 
 @media (min-width: @screen-sm-min) {
   .navbar.navbar-default {
     border-color: #ddd;
     .box-shadow(0 0 13px rgba(0,0,0,0.1));
   }
+}
+
+// Prevent jumpming when the modal is opened
+.vex-open {
+  padding-right: 17px;
 }
 
 .panel.panel-default {
