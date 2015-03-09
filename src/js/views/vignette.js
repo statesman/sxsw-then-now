@@ -1,4 +1,4 @@
-define(['backbone', 'vex'], function(Backbone, vex) {
+define(['backbone', 'tpl', 'vex'], function(Backbone, tpl, vex) {
 
   'use strict';
 
@@ -8,21 +8,15 @@ define(['backbone', 'vex'], function(Backbone, vex) {
       this.render();
     },
 
+    template: tpl.vignette,
+
     render: function() {
 
       vex.defaultOptions.className = 'vex-theme-plain';
 
       var self = this;
       vex.open({
-          content: '<div>' + this.model.get('slug') + '</div>',
-          /*
-          afterOpen: function($vexContent) {
-            return $vexContent.append($el);
-          },
-          afterClose: function() {
-            return console.log('vexClose');
-          }
-          */
+          content: this.template(this.model.toJSON())
         })
         .bind('vexClose', function() {
           self.trigger('closed');

@@ -8,6 +8,7 @@ module.exports = function(grunt) {
     clean: {
       css: ["public/dist/*.css", "public/dist/*.css.map"],
       js: ["public/dist/*.js", "public/dist/*.js.map"],
+      images: ["public/assets/grid/**", "public/assets/now/**"],
       fonts: ["public/fonts/**"]
     },
 
@@ -44,14 +45,6 @@ module.exports = function(grunt) {
         dest: 'public/fonts/',
         flatten: true,
         expand: true
-      },
-      vex: {
-        src: 'bower_components/vex/css/vex.css',
-        dest: 'build/vex.less'
-      },
-      vextheme: {
-        src: 'bower_components/vex/css/vex-theme-plain.css',
-        dest: 'build/vex-theme-plain.less'
       }
     },
 
@@ -156,13 +149,36 @@ module.exports = function(grunt) {
             width: 400,
             height: 267,
             aspectRatio: false
-          }],
+          }]
         },
         files: [{
           expand: true,
           src: ['**/*.{jpg,JPG}'],
-          cwd: 'images/',
+          cwd: 'photos/grid/',
           dest: 'public/assets/grid/'
+        }]
+      },
+      inside: {
+        options: {
+          sizes: [{
+            width: 800
+          }]
+        },
+        files: [{
+          expand: true,
+          src: ['**/*.{jpg,JPG}'],
+          cwd: 'photos/now',
+          dest: 'public/assets/now/'
+        }]
+      }
+    },
+
+    // Parse ArchieML files
+    archieml: {
+      vignettes: {
+        files: [{
+          src: ['vignettes/*.aml'],
+          dest: 'public/data/data.json'
         }]
       }
     }
@@ -180,6 +196,36 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-ftpush');
   grunt.loadNpmTasks('grunt-responsive-images');
 
-  grunt.registerTask('default', ['jshint', 'clean', 'copy', 'less', 'handlebars', 'requirejs']);
+  // Include our custom task to parse Archie files
+  grunt.registerMultiTask('archieml', 'Parse ArchieML files.', function() {
+    var archieml = require('archieml');
+
+    this.files.forEach(function(file) {
+      // Filter out files that don't exist
+      var parsed = file.src.filter(function(src) {
+        if (!grunt.file.exists(src)) {
+          grunt.log.warn('Source file "' + src + '" not found.');
+          return false;
+        } else {
+          return true;
+        }
+      })
+      // Parse files
+      .map(function(src) {
+        grunt.log.writeln('Parsing "' + src);
+        return archieml.load(grunt.file.read(src));
+      });
+
+      // Write parsed contents to destination(s)
+      grunt.file.write(file.dest, JSON.stringify(parsed));
+
+      // Save parsed JSON file
+      grunt.log.oklns('Saved parsed ArchieML file(s) as JSON at "' + file.dest + '".');
+    });
+  });
+
+  grunt.registerTask('build:images', ['clean:images', 'responsive_images'])
+
+  grunt.registerTask('default', ['jshint', 'clean:css', 'clean:js', 'clean:fonts', 'archieml', 'copy', 'less', 'handlebars', 'requirejs']);
 
 };

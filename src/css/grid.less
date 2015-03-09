@@ -4,14 +4,20 @@
   position: relative;
   cursor: pointer;
 
-  @media (min-width: 400px) {
-    width: 50%;
+  @media (max-width: @screen-xs-max) {
+    width: 100%;
   }
   @media (min-width: @screen-sm-min) {
     width: 33.33%;
   }
   @media (min-width: @screen-md-min) {
     width: 25%;
+  }
+
+  .vignette {
+    @media (min-width: @screen-sm-min) {
+      display: none;
+    }
   }
 
   .overlay {
