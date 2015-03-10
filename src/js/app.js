@@ -1,20 +1,24 @@
-require(['jquery', 'vex'], function($, vex) {
+require(['jquery', 'lib/modal', 'lib/debounce', 'lib/vignette'], function($, modal, debounce, Vignette) {
 
   'use strict';
 
   $(function() {
-    vex.defaultOptions.className = 'vex-theme-plain';
-    vex.defaultOptions.contentClassName = 'vignette';
+    var $grid = $('.grid-item');
 
-    $('.grid-item').on('click', '.hidden-xs', modal);
+    // Open the modal when a grid item is clicked
+    $grid.on('click', '.hidden-xs', modal);
 
-    function modal(e) {
-      var content = $(e.target).closest('.grid-item').find('.vignette').html();
+    // Setup all vignettes
+    var vignettes = $grid.map(function(i, el) {
+      return new Vignette(el);
+    }).toArray();
 
-      vex.open({
-        content: content
+    // Resize vignettes on window resize
+    $(window).resize(debounce(function() {
+      vignettes.forEach(function(v) {
+        v.size();
       });
-    }
+    }, 100));
   });
 
 });

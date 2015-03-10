@@ -13,6 +13,38 @@
     font-size: 13.5px;
   }
   margin-bottom: @line-height-computed * 2;
+
+  .then-now {
+    position: relative;
+
+    .then-now-images > *,
+    .then-now-toggle {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    .then-now-toggle {
+      right: 8px;
+      top: 8px;
+
+      button {
+        color: white;
+        background: black;
+        background: rgba(0,0,0,0.5);
+        font-family: @font-family-sans-serif;
+
+        &:first-child {
+          background: none;
+          cursor: default;
+        }
+        &:nth-child(2) {
+          .border-left-radius(@border-radius-small) !important;
+        }
+      }
+    }
+
+  }
 }
 
 .vex {

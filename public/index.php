@@ -75,14 +75,24 @@
     <div id="grid" class="clearfix">
       <?php foreach ($data as $datum): ?>
         <div class="grid-item">
-          <a class="hidden-xs" href="#/<?php print $datum['slug'] ;?>">
+          <a class="hidden-xs" href="#">
             <img width="450" height="300" class="img-responsive" src="assets/grid/<?php print $datum['photo']; ?>-450x300.JPG" />
             <div class="overlay">
               <h2><?php print $datum['name']; ?></h2>
             </div>
           </a>
           <div class="vignette">
-            <img class="img-responsive" src="assets/now/<?php print $datum['photo']; ?>-800.jpg" />
+            <div class="then-now">
+              <div class="then-now-images">
+                <img class="img-responsive now" src="assets/now/<?php print $datum['photo']; ?>-800.jpg" />
+                <img class="img-responsive then" src="assets/then/then.jpg" />
+              </div>
+              <div class="btn-group btn-group-xs then-now-toggle" role="group">
+                <button type="button" class="btn"><i class="fa fa-picture-o"></i></button>
+                <button type="button" class="btn btn-then">Then</button>
+                <button type="button" class="btn btn-now">Now</button>
+              </div>
+            </div>
             <h1><?php print $datum['name']; ?></h1>
             <p class="author">By <?php print $datum['author']; ?>
             <p><?php print $datum['vignette']; ?>
