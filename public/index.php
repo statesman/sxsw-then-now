@@ -88,7 +88,7 @@
               <div class="then-now-images">
                 <?php if(isset($datum['video'])): ?>
                   <div class="video-wrapper" style="width:100%;height:100%;">
-                    <video poster="assets/poster.jpg" data-on-end="nothing" data-youtube-suggested-quality="hd" data-autoresize="fill" data-youtube-id="<?php print $datum['video']; ?>" width="0" height="0" preload="none"></video>
+                    <video poster="assets/poster.jpg" data-on-end="nothing" data-autoresize="fill" data-youtube-id="<?php print $datum['video']; ?>" width="0" height="0" preload="none"></video>
                   </div>
                 <?php endif; ?>
                 <img class="img-responsive now" src="assets/now/<?php print $datum['photo']; ?>-800.jpg" />
