@@ -142,6 +142,19 @@ module.exports = function(grunt) {
           cwd: 'photos/now',
           dest: 'public/assets/now/'
         }]
+      },
+      thumbs: {
+        options: {
+          sizes: [{
+            width: 225
+          }]
+        },
+        files: [{
+          expand: true,
+          src: ['**/*.PNG'],
+          cwd: 'photos/thumbs',
+          dest: 'public/assets/thumbs'
+        }]
       }
     },
 

@@ -1,5 +1,5 @@
 .vignette {
-  h1, h2, p {
+  > h1, > h2, > p {
     margin-left: 20px;
     margin-right: 20px;
   }
@@ -13,6 +13,22 @@
     font-size: 13.5px;
   }
   margin-bottom: @line-height-computed * 2;
+
+  .video-play {
+    text-align: center;
+    margin-left: 15px;
+    margin-right: 20px;
+    margin-bottom: 15px;
+    max-width: 150px;
+
+    .video-thumb {
+      padding: 0;
+    }
+
+    a {
+      line-height: 18px;
+    }
+  }
 
   .then-now {
     position: relative;
@@ -52,9 +68,15 @@
 
 .vex {
   .vignette {
-    h1, h2, p {
+    > h1, > h2, > p {
       margin-left: 40px;
       margin-right: 65px;
+    }
+
+    .video-play {
+      margin-right: 65px;
+      min-width: 225px;
+      max-width: none;
     }
   }
 }

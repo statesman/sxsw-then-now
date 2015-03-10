@@ -9,6 +9,18 @@ define(['jquery', 'imagesloaded'], function($) {
     this.$thenImg = this.$imgs.find('img.then');
     this.$nowImg = this.$imgs.find('img.now');
 
+    // Get the slug
+    this.id = this.$el.attr('id');
+
+    // Attach to Sublime player
+    sublime.ready(function(){
+      var video = this.$imgs.find('video')[0];
+      if(typeof video !== "undefined") {
+        this.video = video;
+        this._setupVideo();
+      }
+    }.bind(this));
+
     // Hide the then image
     this.$thenImg.hide();
 
@@ -17,7 +29,7 @@ define(['jquery', 'imagesloaded'], function($) {
     this.maxHeight = 0;
 
     // Setup slideshow navigation
-    this.slideshowNav();
+    this._setupSlideshow();
 
     // As soon as the images are loaded, trigger a resize
     this.$imgs
@@ -35,19 +47,15 @@ define(['jquery', 'imagesloaded'], function($) {
     }
   };
 
-  // Setup the slideshow navigation
-  Vignette.prototype.slideshowNav = function() {
-    this.$thenButton = this.$el.find('.btn-then');
-    this.$nowButton = this.$el.find('.btn-now');
-
-    this.$thenButton.hover(this.then.bind(this));
-    this.$nowButton.hover(this.now.bind(this));
-  };
-
   // Public method to unbind all events
   Vignette.prototype.destroy = function() {
     this.$thenButton.off('hover');
     this.$nowButton.off('hover');
+
+    if(typeof this.video !== "undefined") {
+      this.$videoButton.off('click');
+      sublime.unprepare(this.video);
+    }
   };
 
   // Event handlers for then and now buttons
@@ -55,20 +63,98 @@ define(['jquery', 'imagesloaded'], function($) {
     if(this.imgState === 'now') {
       this.$thenImg.show();
       this.$nowImg.hide();
-      this.$nowButton.toggleClass('active');
-      this.$thenButton.toggleClass('active');
+      this.$nowButton.removeClass('active');
+      this.$thenButton.addClass('active');
       this.imgState = 'then';
     }
   };
-
-  Vignette.prototype.now = function() {
+  Vignette.prototype.now = function(cb) {
     if(this.imgState === 'then') {
       this.$thenImg.hide();
-      this.$nowImg.show();
-      this.$nowButton.toggleClass('active');
-      this.$thenButton.toggleClass('active');
+      if(typeof cb == "function") {
+        this.$nowImg.fadeIn(cb);
+      }
+      else {
+        this.$nowImg.show();
+      }
+      this.$nowButton.addClass('active');
+      this.$thenButton.removeClass('active');
       this.imgState = 'now';
     }
+  };
+
+  // Setup the slideshow navigation
+  Vignette.prototype._setupSlideshow = function() {
+    this.$thenButton = this.$el.find('.btn-then');
+    this.$nowButton = this.$el.find('.btn-now');
+
+    this.$thenButton.hover(this.then.bind(this));
+    this.$nowButton.hover(this.now.bind(this));
+  };
+
+  // Setup the video player trigger
+  Vignette.prototype._setupVideo = function() {
+    this.$videoButton = this.$el.find('.video-play');
+
+    this.$videoButton.on('click', function(e) {
+      e.preventDefault();
+
+      // Store the unaltered <video> el so we can add it back later; Sublime
+      // will remove it on sublime.unprepare()
+      this._video = this.video;
+
+      // Create the video player
+      sublime.prepare(this.video, function(player) {
+
+        // Save a reference to the video player so we sublime.unprepare()
+        // on this.destroy()
+        this.player = player;
+
+        // Hide the buttons/images
+        this.$thenButton.fadeOut();
+        this.$nowButton.fadeOut();
+        this.$thenImg.fadeOut();
+        this.$nowImg.fadeOut();
+
+        // Scroll to the top; scroll the div if we're in a modal and scroll
+        // the body if we're in not
+        if(this.$el.hasClass('vex-content')) {
+          this.$el.animate({
+            scrollTop: 0
+          }, 250);
+        }
+        else {
+          $('body, html').animate({
+            scrollTop: this.$el.offset().top
+          }, 250);
+        }
+
+        // Play it
+        player.play();
+
+        // When the video is done playing ...
+        player.on('end', function(player) {
+
+          // Fade back in the buttons
+          this.$thenButton.fadeIn();
+          this.$nowButton.fadeIn();
+
+          // Create a callback that will unprepare the video and restore
+          // the original <video> tag (unless the user wants to replay)
+          var cb = function() {
+            sublime.unprepare(this.video);
+
+            this.$el.find('.video-wrapper').html(this._video);
+            this.video = this._video;
+          }.bind(this);
+
+          // Go back to the "now" image and fire the video unpreparer when
+          // the image is done fading in
+          this.imgState = 'then';
+          this.now(cb);
+        }.bind(this));
+      }.bind(this));
+    }.bind(this));
   };
 
   return Vignette;

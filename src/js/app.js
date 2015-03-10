@@ -19,6 +19,9 @@ require(['jquery', 'lib/modal', 'lib/debounce', 'lib/vignette'], function($, mod
         v.size();
       });
     }, 100));
+
+    // Pre-load the sublime API so it's ready later
+    sublime.load();
   });
 
 });

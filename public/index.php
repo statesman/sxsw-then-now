@@ -41,6 +41,8 @@
     <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Merriweather+Sans:400,300,300italic,400italic,700italic,700,800,800italic' rel='stylesheet' type='text/css'>
 
+    <script type="text/javascript" src="//cdn.sublimevideo.net/js/xlgzbpav.js"></script>
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -74,7 +76,7 @@
     ?>
     <div id="grid" class="clearfix">
       <?php foreach ($data as $datum): ?>
-        <div class="grid-item">
+        <div id="<?php print $datum['slug']; ?>" class="grid-item">
           <a class="hidden-xs" href="#">
             <img width="450" height="300" class="img-responsive" src="assets/grid/<?php print $datum['photo']; ?>-450x300.JPG" />
             <div class="overlay">
@@ -84,6 +86,11 @@
           <div class="vignette">
             <div class="then-now">
               <div class="then-now-images">
+                <?php if(isset($datum['video'])): ?>
+                  <div class="video-wrapper" style="width:100%;height:100%;">
+                    <video data-on-end="nothing" data-youtube-suggested-quality="hd" data-autoresize="fill" data-youtube-id="<?php print $datum['video']; ?>" width="0" height="0" preload="none"></video>
+                  </div>
+                <?php endif; ?>
                 <img class="img-responsive now" src="assets/now/<?php print $datum['photo']; ?>-800.jpg" />
                 <img class="img-responsive then" src="assets/then/then.jpg" />
               </div>
@@ -93,8 +100,18 @@
               </div>
             </div>
             <h1><?php print $datum['name']; ?></h1>
-            <p class="author">By <?php print $datum['author']; ?>
-            <p><?php print $datum['vignette']; ?>
+            <p class="author">By <?php print $datum['author']; ?></p>
+            <?php if(isset($datum['video'])): ?>
+              <div class="video-play list-group pull-right">
+                <div class="list-group-item video-thumb">
+                  <img class="img-responsive" width="225" src="assets/thumbs/<?php print $datum['photo']; ?>-225.PNG" />
+                </div>
+                <a href="#" class="list-group-item">
+                  <i class="fa fa-youtube-play"></i> Play the video
+                </a>
+              </div>
+            <?php endif; ?>
+            <p><?php print $datum['vignette']; ?></p>
           </div>
         </div>
       <?php endforeach; ?>
