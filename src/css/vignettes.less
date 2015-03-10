@@ -31,7 +31,7 @@
       button {
         color: white;
         background: black;
-        background: rgba(0,0,0,0.5);
+        background: @photo-overlay-bg;
         font-family: @font-family-sans-serif;
 
         i:after {
@@ -40,7 +40,6 @@
         }
 
         &.active {
-          font-weight: bold;
           i:after {
             content: @fa-var-dot-circle-o;
           }

@@ -1,4 +1,4 @@
-define(['vex'], function(vex) {
+define(['vex', 'lib/vignette'], function(vex, Vignette) {
 
   vex.defaultOptions.className = 'vex-theme-plain';
   vex.defaultOptions.contentClassName = 'vignette';
@@ -13,8 +13,15 @@ define(['vex'], function(vex) {
       .html()
       .toString();
 
+    var self = this;
     vex.open({
-      content: content
+      content: content,
+      afterOpen: function($vexContent) {
+        self.vignette = new Vignette($vexContent);
+      },
+      afterClose: function() {
+        self.vignette.destroy();
+      }
     });
   };
 

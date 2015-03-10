@@ -95,6 +95,7 @@
   height: 100%;
   max-width: 800px;
   overflow-y: scroll;
+  padding-bottom: @line-height-computed;
   .box-shadow(0 0 50px rgba(0,0,0,0.4));
 }
 
@@ -105,23 +106,25 @@
   cursor: pointer;
 }
 .vex.vex-theme-plain .vex-close:before {
+  .fa-icon();
   position: absolute;
-  content: "\00D7";
-  font-size: 26px;
+  content: @fa-var-times;
+  font-size: 18px;
   font-weight: normal;
   line-height: 31px;
   height: 30px;
   width: 30px;
   text-align: center;
-  top: 3px;
-  right: 3px;
-  color: #bbb;
-  background: transparent;
+  top: 8px;
+  right: 8px;
+  color: white;
+  border-radius: 5px;
+  background: @photo-overlay-bg;
 }
 .vex.vex-theme-plain .vex-close:hover:before,
 .vex.vex-theme-plain .vex-close:active:before {
-  color: #777;
-  background: #e0e0e0;
+  color: white;
+  background: @photo-overlay-bg;
 }
 
 .vex-loading-spinner.vex-theme-plain {
