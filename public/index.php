@@ -87,10 +87,9 @@
                 <img class="img-responsive now" src="assets/now/<?php print $datum['photo']; ?>-800.jpg" />
                 <img class="img-responsive then" src="assets/then/then.jpg" />
               </div>
-              <div class="btn-group btn-group-xs then-now-toggle" role="group">
-                <button type="button" class="btn"><i class="fa fa-picture-o"></i></button>
-                <button type="button" class="btn btn-then">Then</button>
-                <button type="button" class="btn btn-now">Now</button>
+              <div class="btn-group btn-group-sm then-now-toggle" role="group">
+                <button type="button" class="btn btn-then"><i></i> Then</button>
+                <button type="button" class="btn btn-now active"><i></i> Now</button>
               </div>
             </div>
             <h1><?php print $datum['name']; ?></h1>

@@ -25,7 +25,7 @@
     }
 
     .then-now-toggle {
-      right: 8px;
+      left: 8px;
       top: 8px;
 
       button {
@@ -34,12 +34,16 @@
         background: rgba(0,0,0,0.5);
         font-family: @font-family-sans-serif;
 
-        &:first-child {
-          background: none;
-          cursor: default;
+        i:after {
+          .fa-icon();
+          content: @fa-var-circle-o;
         }
-        &:nth-child(2) {
-          .border-left-radius(@border-radius-small) !important;
+
+        &.active {
+          font-weight: bold;
+          i:after {
+            content: @fa-var-dot-circle-o;
+          }
         }
       }
     }

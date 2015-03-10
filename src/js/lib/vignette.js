@@ -55,6 +55,8 @@ define(['jquery', 'imagesloaded'], function($) {
     if(this.imgState === 'now') {
       this.$thenImg.show();
       this.$nowImg.hide();
+      this.$nowButton.toggleClass('active');
+      this.$thenButton.toggleClass('active');
       this.imgState = 'then';
     }
   };
@@ -63,6 +65,8 @@ define(['jquery', 'imagesloaded'], function($) {
     if(this.imgState === 'then') {
       this.$thenImg.hide();
       this.$nowImg.show();
+      this.$nowButton.toggleClass('active');
+      this.$thenButton.toggleClass('active');
       this.imgState = 'now';
     }
   };
