@@ -78,7 +78,7 @@
       <?php foreach ($data as $datum): ?>
         <div id="<?php print $datum['slug']; ?>" class="grid-item">
           <a class="hidden-xs" href="#">
-            <img width="450" height="300" class="img-responsive" src="assets/grid/<?php print $datum['photo']; ?>-450x300.JPG" />
+            <img width="450" height="300" class="img-responsive" src="assets/grid/<?php print $datum['photo']; ?>-450x300.jpg" />
             <div class="overlay">
               <h2><?php print $datum['name']; ?></h2>
             </div>

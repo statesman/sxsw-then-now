@@ -94,7 +94,7 @@ module.exports = function(grunt) {
           authKey: 'cmg'
         },
         src: 'public',
-        dest: '/stage_aas/projects/news/template',
+        dest: '/stage_aas/projects/news/sxsw-then-now',
         exclusions: ['dist/tmp','Thumbs.db'],
         simple: true,
         useList: false
@@ -106,7 +106,7 @@ module.exports = function(grunt) {
           authKey: 'cmg'
         },
         src: 'public',
-        dest: '/prod_aas/projects/news/template',
+        dest: '/prod_aas/projects/news/sxsw-then-now',
         exclusions: ['dist/tmp','Thumbs.db'],
         simple: true,
         useList: false
@@ -138,7 +138,7 @@ module.exports = function(grunt) {
         },
         files: [{
           expand: true,
-          src: ['**/*.{jpg,JPG}'],
+          src: ['**/*.{jpg}'],
           cwd: 'photos/now',
           dest: 'public/assets/now/'
         }]
@@ -151,7 +151,7 @@ module.exports = function(grunt) {
         },
         files: [{
           expand: true,
-          src: ['**/*.PNG'],
+          src: ['**/*.png'],
           cwd: 'photos/thumbs',
           dest: 'public/assets/thumbs'
         }]
