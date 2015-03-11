@@ -119,8 +119,18 @@
                     <video poster="assets/posters/<?php print $datum['photo']; ?>.png" data-on-end="nothing" data-autoresize="fill" data-uid="<?php print $datum['slug']; ?>" data-youtube-id="<?php print $datum['video']; ?>" width="0" height="0" preload="none" data-title="<?php print $datum['name']; ?>"></video>
                   </div>
                 <?php endif; ?>
-                <img class="img-responsive now" src="assets/now/<?php print $datum['photo']; ?>-800.jpg" />
-                <img class="img-responsive then" src="assets/then/<?php print $datum['photo']; ?>-800.jpg" />
+                <div class="now">
+                  <img class="img-responsive" src="assets/now/<?php print $datum['photo']; ?>-800.jpg" />
+                  <?php if($datum['slug'] === 'jamie-wilken'): ?>
+                    <p class="caption"><?php print $datum['captions']['then']; ?> <span class="credit pull-right">Courtesy photo</span></p>
+                  <?php else: ?>
+                    <p class="caption"><?php print $datum['captions']['then']; ?> <span class="credit pull-right">Jay Janner / American-Statesman</span></p>
+                  <?php endif; ?>
+                </div>
+                <div class="then">
+                  <img class="img-responsive" src="assets/then/<?php print $datum['photo']; ?>-800.jpg" />
+                  <p class="caption"><?php print $datum['captions']['then']; ?> <span class="credit pull-right">Jay Janner / American-Statesman</span></p>
+                </div>
               </div>
               <div class="btn-group btn-group-sm then-now-toggle" role="group">
                 <button type="button" class="btn btn-then"><i></i> Then</button>

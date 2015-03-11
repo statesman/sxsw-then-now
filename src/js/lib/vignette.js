@@ -6,8 +6,8 @@ define(['jquery', 'imagesloaded'], function($) {
 
     this.$imgs = this.$el.find('.then-now-images');
 
-    this.$thenImg = this.$imgs.find('img.then');
-    this.$nowImg = this.$imgs.find('img.now');
+    this.$thenImg = this.$imgs.find('.then');
+    this.$nowImg = this.$imgs.find('.now');
 
     // Get the slug
     this.id = this.$el.attr('id');
