@@ -87,9 +87,11 @@
 
       <p>One sees the bright headlights of a car speeding toward her; another hears the strangely muffled thumps of a car colliding with bodies. A third feels the puff of air against his leg as the Honda Civic passes mere feet away. A young woman summons a single frozen tableau — a man curled on the car’s front hood just before being thrown — as vivid now as when it happened March 13, 2014.</p>
 
-      <p>And another remembers nothing, the only evidence he was there the scar on his scalp and the surreal photos in which he is lying facedown and unconscious on the street.</p>
+      <p>Another remembers nothing, the only evidence he was there the scar on his scalp and the surreal photos in which he is lying facedown and unconscious on the street.</p>
 
-      <p>Yet for each specific memory of the pain, there is a matching remembrance of good, an opposite and equal reaction to the night’s horrors: the bystander who laid her sweater on a victim, or who started CPR, or used his shirt for a tourniquet, or knelt near the head of an injured man to hold his neck until medical help arrived.</p>
+      <p>Yet all are aware they are, in a sense, lucky. Jamie West, 27, and Steven Craenmehr, 35 died that night of their injuries. De’Andre Tatum, 18, and 26-year-old Sandy Le succumbed days later.</p>
+
+      <p>And for each specific memory of the pain, there is a matching remembrance of good, an opposite and equal reaction to the night’s horrors: the bystander who laid her sweater on a victim, or who started CPR, or used his shirt for a tourniquet, or knelt near the head of an injured man to hold his neck until medical help arrived.</p>
 
       <p>Several people also forged connections with those who moments earlier had been complete strangers. A year later, that tie may be only the occasional check-in — a text, a short email exchange. Yet it is an essential reminder that the tragedy happened, and that they were there.</p>
 
