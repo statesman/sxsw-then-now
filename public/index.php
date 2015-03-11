@@ -120,7 +120,7 @@
                   </div>
                 <?php endif; ?>
                 <img class="img-responsive now" src="assets/now/<?php print $datum['photo']; ?>-800.jpg" />
-                <img class="img-responsive then" src="assets/then/then.jpg" />
+                <img class="img-responsive then" src="assets/then/<?php print $datum['photo']; ?>-800.jpg" />
               </div>
               <div class="btn-group btn-group-sm then-now-toggle" role="group">
                 <button type="button" class="btn btn-then"><i></i> Then</button>

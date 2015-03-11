@@ -142,9 +142,9 @@ module.exports = function(grunt) {
         },
         files: [{
           expand: true,
-          src: ['**/*.jpg'],
-          cwd: 'photos/now',
-          dest: 'public/assets/now/'
+          src: ['now/*.jpg', 'then/*.jpg'],
+          cwd: 'photos/',
+          dest: 'public/assets/'
         }]
       },
       thumbs: {
