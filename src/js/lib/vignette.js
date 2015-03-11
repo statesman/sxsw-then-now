@@ -129,8 +129,8 @@ define(['jquery', 'imagesloaded'], function($) {
           }, 250);
         }
 
-        // Play it
-        player.play();
+        // Play it ... but don't for now, because mobile hates that
+        // player.play();
 
         // When the video is done playing ...
         player.on('end', function(player) {

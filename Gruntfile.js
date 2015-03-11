@@ -21,6 +21,10 @@ module.exports = function(grunt) {
         dest: 'public/fonts/',
         flatten: true,
         expand: true
+      },
+      posters: {
+        src: 'photos/thumbs/*.png',
+        dest: 'public/assets/posters/'
       }
     },
 
