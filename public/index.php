@@ -40,6 +40,7 @@
     <link href='http://fonts.googleapis.com/css?family=Lusitana:400,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Merriweather+Sans:400,300,300italic,400italic,700italic,700,800,800italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
 
     <script type="text/javascript" src="//cdn.sublimevideo.net/js/xlgzbpav.js"></script>
 
@@ -70,6 +71,31 @@
       </div>
     </nav>
 
+    <div id="intro">
+      <h1 class="intro-hed">One Tragic Night.</h1>
+      <h1 class="intro-hed">One Year Later.</h1>
+
+      <?php /*<p class="authors">Reporting: Eric Dexheimer, Ciara O'Rourke, Tony Plohetski, Jeremy Schwartz and Andrea Ball<br />Photography: Jay Janner<br />Videography: Kelly West<br />Presentation: Andrew Chavez</p> */ ?>
+
+      <div class="intro-video">
+        <video id="intro-video" data-uid="intro-video" class="sublime" poster="assets/grid.jpg" data-on-end="stop" data-autoresize="fit" data-youtube-id="sIAMMzcogto" width="1280" height="720" preload style="max-width: 100%;" data-title="Introduction video" data-initial-overlay-visibility="visible"></video>
+      </div>
+
+      <p class="lead">For many of those who were on or near Red River Street when Rashad Owens plowed into a late-night crowd of music fans, their recollections today are as sensory as they are mental, reminders of an event still felt as much as remembered.</p>
+
+      <p>One sees the bright headlights of a car speeding toward her; another hears the strangely muffled thumps of a car colliding with bodies. A third feels the puff of air against his leg as the Honda Civic passes mere feet away. A young woman summons a single frozen tableau — a man curled on the car’s front hood just before being thrown — as vivid now as when it happened March 13, 2014.</p>
+
+      <p>And another remembers nothing, the only evidence he was there the scar on his scalp and the surreal photos in which he is lying facedown and unconscious on the street.</p>
+
+      <p>Yet for each specific memory of the pain, there is a matching remembrance of good, an opposite and equal reaction to the night’s horrors: the bystander who laid her sweater on a victim, or who started CPR, or used his shirt for a tourniquet, or knelt near the head of an injured man to hold his neck until medical help arrived.</p>
+
+      <p>Several people also forged connections with those who moments earlier had been complete strangers. A year later, that tie may be only the occasional check-in — a text, a short email exchange. Yet it is an essential reminder that the tragedy happened, and that they were there.</p>
+
+      <p>American-Statesman staff photographer Jay Janner was on the balcony of the Mohawk, shooting pictures of the band X’s outdoor concert when the crash occurred. Time stamps on his photos show he started taking pictures of the accident scene 19 seconds after Owens drove by. The paper tracked down 11 of the people who appeared in those shots.</p>
+
+      <p><em>&mdash; Eric Dexheimer</em></p>
+    </div>
+
     <?php
       $string = file_get_contents("data/data.json");
       $data = json_decode($string, true);
@@ -88,7 +114,7 @@
               <div class="then-now-images">
                 <?php if(isset($datum['video'])): ?>
                   <div class="video-wrapper" style="width:100%;height:100%;">
-                    <video poster="assets/posters/<?php print $datum['photo']; ?>.png" data-on-end="nothing" data-autoresize="fill" data-youtube-id="<?php print $datum['video']; ?>" width="0" height="0" preload="none"></video>
+                    <video poster="assets/posters/<?php print $datum['photo']; ?>.png" data-on-end="nothing" data-autoresize="fill" data-uid="<?php print $datum['slug']; ?>" data-youtube-id="<?php print $datum['video']; ?>" width="0" height="0" preload="none" data-title="<?php print $datum['name']; ?>"></video>
                   </div>
                 <?php endif; ?>
                 <img class="img-responsive now" src="assets/now/<?php print $datum['photo']; ?>-800.jpg" />

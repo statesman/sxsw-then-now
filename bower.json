@@ -18,6 +18,7 @@
     "font-awesome": "~4.2.0",
     "almond": "~0.3.0",
     "vex": "~2.3.2",
-    "imagesloaded": "~3.1.8"
+    "imagesloaded": "~3.1.8",
+    "FitText.js": "~1.2.0"
   }
 }

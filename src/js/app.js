@@ -1,4 +1,4 @@
-require(['jquery', 'lib/modal', 'lib/debounce', 'lib/vignette'], function($, modal, debounce, Vignette) {
+require(['jquery', 'lib/modal', 'lib/debounce', 'lib/vignette', 'lib/intro', 'fittext'], function($, modal, debounce, Vignette) {
 
   'use strict';
 
@@ -20,8 +20,11 @@ require(['jquery', 'lib/modal', 'lib/debounce', 'lib/vignette'], function($, mod
       });
     }, 100));
 
-    // Pre-load the sublime API so it's ready later
-    sublime.load();
+    // Inflate Intro headline text
+    $('.intro-hed').fitText(0.64, {
+      maxFontSize: '100px'
+    });
+    // $('.intro-hed').last().fitText(0.575);
   });
 
 });
