@@ -79,7 +79,7 @@
 
       <?php /*<p class="authors">Reporting: Eric Dexheimer, Ciara O'Rourke, Tony Plohetski, Jeremy Schwartz and Andrea Ball<br />Photography: Jay Janner<br />Videography: Kelly West<br />Presentation: Andrew Chavez</p> */ ?>
 
-      <div class="intro-video">
+      <div class="intro-video embed-responsive embed-responsive-16by9">
         <video id="intro-video" data-uid="intro-video" class="sublime" poster="assets/grid.jpg" data-on-end="stop" data-autoresize="fit" data-youtube-id="sIAMMzcogto" width="1280" height="720" preload style="max-width: 100%;" data-title="Introduction video" data-initial-overlay-visibility="visible"></video>
       </div>
 
@@ -115,21 +115,23 @@
             <div class="then-now">
               <div class="then-now-images">
                 <?php if(isset($datum['video'])): ?>
-                  <div class="video-wrapper" style="width:100%;height:100%;">
-                    <video poster="assets/posters/<?php print $datum['photo']; ?>.jpg" data-on-end="nothing" data-autoresize="fill" data-uid="<?php print $datum['slug']; ?>" data-youtube-id="<?php print $datum['video']; ?>" width="0" height="0" preload="none" data-title="<?php print $datum['name']; ?>"></video>
+                  <div class="video-wrapper clearfix" style="display:none;">
+                    <div class="embed-responsive embed-responsive-16by9 clearfix">
+                      <video poster="assets/posters/<?php print $datum['photo']; ?>.jpg" data-on-end="nothing" data-autoresize="fit" data-uid="<?php print $datum['slug']; ?>" data-youtube-id="<?php print $datum['video']; ?>" width="1280" height="720" preload="none" data-title="<?php print $datum['name']; ?>"></video>
+                    </div>
                   </div>
                 <?php endif; ?>
                 <div class="now">
                   <img class="img-responsive" src="assets/now/<?php print $datum['photo']; ?>-800.jpg" />
                   <?php if($datum['slug'] === 'jamie-wilken'): ?>
-                    <p class="caption"><?php print $datum['captions']['then']; ?> <span class="credit pull-right">Courtesy photo</span></p>
+                    <p class="caption clearfix"><?php print $datum['captions']['then']; ?> <span class="credit pull-right">Courtesy photo</span></p>
                   <?php else: ?>
-                    <p class="caption"><?php print $datum['captions']['then']; ?> <span class="credit pull-right">Jay Janner / American-Statesman</span></p>
+                    <p class="caption clearfix"><?php print $datum['captions']['then']; ?> <span class="credit pull-right">Jay Janner / American-Statesman</span></p>
                   <?php endif; ?>
                 </div>
-                <div class="then">
+                <div class="then" style="display:none;">
                   <img class="img-responsive" src="assets/then/<?php print $datum['photo']; ?>-800.jpg" />
-                  <p class="caption"><?php print $datum['captions']['then']; ?> <span class="credit pull-right">Jay Janner / American-Statesman</span></p>
+                  <p class="caption clearfix"><?php print $datum['captions']['then']; ?> <span class="credit pull-right">Jay Janner / American-Statesman</span></p>
                 </div>
               </div>
               <div class="btn-group btn-group-sm then-now-toggle" role="group">
@@ -138,7 +140,7 @@
               </div>
               <?php if(isset($datum['video'])): ?>
                 <div class="btn-group btn-group-sm" role="group">
-                  <button type="button" class="btn btn-video-close"><i class="fa fa-caret-square-o-down"></i> Close video</button>
+                  <button type="button" class="btn btn-video-close" style="display:none;"><i class="fa fa-caret-square-o-down"></i> Close video</button>
                 </div>
               <?php endif; ?>
             </div>
@@ -153,7 +155,7 @@
                   <img class="img-responsive" width="225" src="assets/thumbs/<?php print $datum['photo']; ?>-225.jpg" />
                 </div>
                 <a href="#" class="list-group-item">
-                  <i class="fa fa-youtube-play"></i> Video
+                  <i class="fa fa-play-circle"></i> Video
                 </a>
               </div>
             <?php endif; ?>

@@ -1,4 +1,4 @@
-define(['jquery', 'imagesloaded'], function($) {
+define(['jquery'], function($) {
 
   function Vignette(el) {
     // Store references to important elements
@@ -9,43 +9,21 @@ define(['jquery', 'imagesloaded'], function($) {
     this.$thenImg = this.$imgs.find('.then');
     this.$nowImg = this.$imgs.find('.now');
 
-    // Get the slug
-    this.id = this.$el.attr('id');
-
     // Attach to Sublime player
     sublime.ready(function(){
-      var video = this.$imgs.find('video')[0];
+      var video = this.$el.find('video')[0];
       if(typeof video !== "undefined") {
         this.video = video;
         this._setupVideo();
       }
     }.bind(this));
 
-    // Hide the then image
-    this.$thenImg.hide();
-
     // Set some default state variables
     this.imgState = 'now';
-    this.maxHeight = 0;
 
     // Setup slideshow navigation
     this._setupSlideshow();
-
-    // As soon as the images are loaded, trigger a resize
-    this.$imgs
-      .imagesLoaded()
-      .always(this.size.bind(this));
   }
-
-  // Size the vignette, based on size of images
-  Vignette.prototype.size = function(heights) {
-    var height = Math.max(this.$thenImg.height(), this.$nowImg.height());
-
-    if(this.maxHeight !== height) {
-      this.$imgs.height(height);
-      this.maxHeight = height;
-    }
-  };
 
   // Public method to unbind all events
   Vignette.prototype.destroy = function() {
@@ -101,7 +79,6 @@ define(['jquery', 'imagesloaded'], function($) {
     // Setup the video close button
     this.$closeVideoButton = this.$el.find('.btn-video-close');
     this.$closeVideoButton
-      .hide()
       .on('click', this._destroyVideo.bind(this));
 
     this.$videoButton.on('click', function(e) {
@@ -113,6 +90,12 @@ define(['jquery', 'imagesloaded'], function($) {
 
       // Create the video player
       sublime.prepare(this.video, function(player) {
+        if(this.$el.hasClass('vex-content')) {
+          player.setSize(this.$el.innerWidth() - 17, (this.$el.innerWidth() - 17) / 1.77);
+        }
+        else {
+          player.setSize(this.$el.width(), this.$el.width() / 1.77);
+        }
 
         // Save a reference to the video player so we sublime.unprepare()
         // on this.destroy()
@@ -122,8 +105,10 @@ define(['jquery', 'imagesloaded'], function($) {
         this.$thenButton.fadeOut();
         this.$nowButton.fadeOut();
         this.$thenImg.fadeOut();
-        this.$nowImg.fadeOut();
         this.$closeVideoButton.fadeIn();
+        this.$nowImg.fadeOut(function() {
+          this.$el.find('.video-wrapper').show();
+        }.bind(this));
 
         // Scroll to the top; scroll the div if we're in a modal and scroll
         // the body if we're in not
@@ -138,9 +123,6 @@ define(['jquery', 'imagesloaded'], function($) {
           }, 250);
         }
 
-        // Play it ... but don't for now, because mobile hates that
-        // player.play();
-
         // When the video is done playing ...
         player.on('end', this._destroyVideo.bind(this));
       }.bind(this));
@@ -152,6 +134,8 @@ define(['jquery', 'imagesloaded'], function($) {
     this.$thenButton.fadeIn();
     this.$nowButton.fadeIn();
     this.$closeVideoButton.fadeOut();
+
+    this.$el.find('.video-wrapper').hide();
 
     // Create a callback that will unprepare the video and restore
     // the original <video> tag (unless the user wants to replay)

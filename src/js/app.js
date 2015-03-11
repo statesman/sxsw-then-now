@@ -13,13 +13,6 @@ require(['jquery', 'lib/modal', 'lib/debounce', 'lib/vignette', 'lib/intro', 'fi
       return new Vignette(el);
     }).toArray();
 
-    // Resize vignettes on window resize
-    $(window).resize(debounce(function() {
-      vignettes.forEach(function(v) {
-        v.size();
-      });
-    }, 100));
-
     // Inflate Intro headline text
     $('.intro-hed').fitText(0.64, {
       maxFontSize: '100px'
