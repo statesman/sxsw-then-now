@@ -124,9 +124,9 @@
                 <div class="now">
                   <img class="img-responsive" src="assets/now/<?php print $datum['photo']; ?>-800.jpg" />
                   <?php if($datum['slug'] === 'jamie-wilken'): ?>
-                    <p class="caption clearfix"><?php print $datum['captions']['then']; ?> <span class="credit pull-right">Courtesy photo</span></p>
+                    <p class="caption clearfix"><?php print $datum['captions']['now']; ?> <span class="credit pull-right">Courtesy photo</span></p>
                   <?php else: ?>
-                    <p class="caption clearfix"><?php print $datum['captions']['then']; ?> <span class="credit pull-right">Jay Janner / American-Statesman</span></p>
+                    <p class="caption clearfix"><?php print $datum['captions']['now']; ?> <span class="credit pull-right">Jay Janner / American-Statesman</span></p>
                   <?php endif; ?>
                 </div>
                 <div class="then" style="display:none;">
