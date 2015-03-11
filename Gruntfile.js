@@ -23,8 +23,10 @@ module.exports = function(grunt) {
         expand: true
       },
       posters: {
-        src: 'photos/thumbs/*.png',
-        dest: 'public/assets/posters/'
+        src: 'photos/posters/*.jpg',
+        dest: 'public/assets/posters/',
+        flatten: true,
+        expand: true
       }
     },
 
@@ -155,8 +157,8 @@ module.exports = function(grunt) {
         },
         files: [{
           expand: true,
-          src: ['**/*.png'],
-          cwd: 'photos/thumbs',
+          src: ['**/*.jpg'],
+          cwd: 'photos/posters',
           dest: 'public/assets/thumbs'
         }]
       }

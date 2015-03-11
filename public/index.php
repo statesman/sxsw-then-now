@@ -116,7 +116,7 @@
               <div class="then-now-images">
                 <?php if(isset($datum['video'])): ?>
                   <div class="video-wrapper" style="width:100%;height:100%;">
-                    <video poster="assets/posters/<?php print $datum['photo']; ?>.png" data-on-end="nothing" data-autoresize="fill" data-uid="<?php print $datum['slug']; ?>" data-youtube-id="<?php print $datum['video']; ?>" width="0" height="0" preload="none" data-title="<?php print $datum['name']; ?>"></video>
+                    <video poster="assets/posters/<?php print $datum['photo']; ?>.jpg" data-on-end="nothing" data-autoresize="fill" data-uid="<?php print $datum['slug']; ?>" data-youtube-id="<?php print $datum['video']; ?>" width="0" height="0" preload="none" data-title="<?php print $datum['name']; ?>"></video>
                   </div>
                 <?php endif; ?>
                 <div class="now">
@@ -150,7 +150,7 @@
             <?php if(isset($datum['video'])): ?>
               <div class="video-play list-group pull-right">
                 <div class="list-group-item video-thumb">
-                  <img class="img-responsive" width="225" src="assets/thumbs/<?php print $datum['photo']; ?>-225.PNG" />
+                  <img class="img-responsive" width="225" src="assets/thumbs/<?php print $datum['photo']; ?>-225.jpg" />
                 </div>
                 <a href="#" class="list-group-item">
                   <i class="fa fa-youtube-play"></i> Video
