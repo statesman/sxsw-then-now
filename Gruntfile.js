@@ -212,8 +212,8 @@ module.exports = function(grunt) {
     });
   });
 
-  grunt.registerTask('build:images', ['clean:images', 'responsive_images'])
+  grunt.registerTask('build:images', ['clean:images', 'copy:posters', 'responsive_images'])
 
-  grunt.registerTask('default', ['jshint', 'clean:css', 'clean:js', 'clean:fonts', 'archieml', 'copy', 'less', 'requirejs']);
+  grunt.registerTask('default', ['jshint', 'clean:css', 'clean:js', 'clean:fonts', 'archieml', 'copy:fonts', 'less', 'requirejs']);
 
 };

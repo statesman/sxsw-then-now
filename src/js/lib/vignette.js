@@ -55,6 +55,8 @@ define(['jquery', 'imagesloaded'], function($) {
     if(typeof this.video !== "undefined") {
       this.$videoButton.off('click');
       sublime.unprepare(this.video);
+
+      this.$closeVideoButton.off('click');
     }
   };
 
@@ -96,6 +98,12 @@ define(['jquery', 'imagesloaded'], function($) {
   Vignette.prototype._setupVideo = function() {
     this.$videoButton = this.$el.find('.video-play');
 
+    // Setup the video close button
+    this.$closeVideoButton = this.$el.find('.btn-video-close');
+    this.$closeVideoButton
+      .hide()
+      .on('click', this._destroyVideo.bind(this));
+
     this.$videoButton.on('click', function(e) {
       e.preventDefault();
 
@@ -110,11 +118,12 @@ define(['jquery', 'imagesloaded'], function($) {
         // on this.destroy()
         this.player = player;
 
-        // Hide the buttons/images
+        // Toggle buttons/images
         this.$thenButton.fadeOut();
         this.$nowButton.fadeOut();
         this.$thenImg.fadeOut();
         this.$nowImg.fadeOut();
+        this.$closeVideoButton.fadeIn();
 
         // Scroll to the top; scroll the div if we're in a modal and scroll
         // the body if we're in not
@@ -133,28 +142,30 @@ define(['jquery', 'imagesloaded'], function($) {
         // player.play();
 
         // When the video is done playing ...
-        player.on('end', function(player) {
-
-          // Fade back in the buttons
-          this.$thenButton.fadeIn();
-          this.$nowButton.fadeIn();
-
-          // Create a callback that will unprepare the video and restore
-          // the original <video> tag (unless the user wants to replay)
-          var cb = function() {
-            sublime.unprepare(this.video);
-
-            this.$el.find('.video-wrapper').html(this._video);
-            this.video = this._video;
-          }.bind(this);
-
-          // Go back to the "now" image and fire the video unpreparer when
-          // the image is done fading in
-          this.imgState = 'then';
-          this.now(cb);
-        }.bind(this));
+        player.on('end', this._destroyVideo.bind(this));
       }.bind(this));
     }.bind(this));
+  };
+
+  Vignette.prototype._destroyVideo = function() {
+    // Fade back in the buttons
+    this.$thenButton.fadeIn();
+    this.$nowButton.fadeIn();
+    this.$closeVideoButton.fadeOut();
+
+    // Create a callback that will unprepare the video and restore
+    // the original <video> tag (unless the user wants to replay)
+    var cb = function() {
+      sublime.unprepare(this.video);
+
+      this.$el.find('.video-wrapper').html(this._video);
+      this.video = this._video;
+    }.bind(this);
+
+    // Go back to the "now" image and fire the video unpreparer when
+    // the image is done fading in
+    this.imgState = 'then';
+    this.now(cb);
   };
 
   return Vignette;

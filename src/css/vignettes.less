@@ -33,14 +33,14 @@
   .then-now {
     position: relative;
 
-    .then-now-images > *,
-    .then-now-toggle {
+    .then-now-images > * {
       position: absolute;
       right: 0;
       top: 0;
     }
 
-    .then-now-toggle {
+    .btn-group {
+      position: absolute;
       left: 8px;
       top: 8px;
 
@@ -50,15 +50,22 @@
         background: @photo-overlay-bg;
         font-family: @font-family-sans-serif;
 
-        i:after {
-          .fa-icon();
-          content: @fa-var-circle-o;
+        &.btn-then,
+        &.btn-now {
+          i:after {
+            .fa-icon();
+            content: @fa-var-circle-o;
+          }
+
+          &.active {
+            i:after {
+              content: @fa-var-dot-circle-o;
+            }
+          }
         }
 
-        &.active {
-          i:after {
-            content: @fa-var-dot-circle-o;
-          }
+        &.btn-video-close {
+          z-index: 10000;
         }
       }
     }
