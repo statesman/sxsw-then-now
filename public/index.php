@@ -98,9 +98,11 @@
                 <button type="button" class="btn btn-then"><i></i> Then</button>
                 <button type="button" class="btn btn-now active"><i></i> Now</button>
               </div>
-              <div class="btn-group btn-group-sm" role="group">
-                <button type="button" class="btn btn-video-close"><i class="fa fa-caret-square-o-down"></i> Close video</button>
-              </div>
+              <?php if(isset($datum['video'])): ?>
+                <div class="btn-group btn-group-sm" role="group">
+                  <button type="button" class="btn btn-video-close"><i class="fa fa-caret-square-o-down"></i> Close video</button>
+                </div>
+              <?php endif; ?>
             </div>
             <h1><?php print $datum['name']; ?></h1>
             <p class="author">By <?php print $datum['author']; ?></p>
