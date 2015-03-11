@@ -50,6 +50,8 @@
         background: @photo-overlay-bg;
         font-family: @font-family-sans-serif;
 
+        z-index: 10000;
+
         &.btn-then,
         &.btn-now {
           i:after {
@@ -62,10 +64,6 @@
               content: @fa-var-dot-circle-o;
             }
           }
-        }
-
-        &.btn-video-close {
-          z-index: 10000;
         }
       }
     }
