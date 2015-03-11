@@ -75,6 +75,8 @@
       <h1 class="intro-hed">One Tragic Night.</h1>
       <h1 class="intro-hed">One Year Later.</h1>
 
+      <h2>A car racing through the crowd during SXSW connects people in memories and nightmares</h2>
+
       <?php /*<p class="authors">Reporting: Eric Dexheimer, Ciara O'Rourke, Tony Plohetski, Jeremy Schwartz and Andrea Ball<br />Photography: Jay Janner<br />Videography: Kelly West<br />Presentation: Andrew Chavez</p> */ ?>
 
       <div class="intro-video">
@@ -91,7 +93,7 @@
 
       <p>Several people also forged connections with those who moments earlier had been complete strangers. A year later, that tie may be only the occasional check-in — a text, a short email exchange. Yet it is an essential reminder that the tragedy happened, and that they were there.</p>
 
-      <p>American-Statesman staff photographer Jay Janner was on the balcony of the Mohawk, shooting pictures of the band X’s outdoor concert when the crash occurred. Time stamps on his photos show he started taking pictures of the accident scene 19 seconds after Owens drove by. The paper tracked down 11 of the people who appeared in those shots.</p>
+      <p>American-Statesman staff photographer Jay Janner was on the balcony of the Mohawk, shooting pictures of the band X’s outdoor concert when the crash occurred. Time stamps on his photos show he started taking pictures of the accident scene 19 seconds after Owens drove by. The paper tracked down 12 of the people who appeared in those shots.</p>
 
       <p><em>&mdash; Eric Dexheimer</em></p>
     </div>
@@ -131,6 +133,9 @@
               <?php endif; ?>
             </div>
             <h1><?php print $datum['name']; ?></h1>
+            <?php if(isset($datum['hed'])): ?>
+              <h2><?php print $datum['hed']; ?></h2>
+            <?php endif; ?>
             <p class="author">By <?php print $datum['author']; ?></p>
             <?php if(isset($datum['video'])): ?>
               <div class="video-play list-group pull-right">
