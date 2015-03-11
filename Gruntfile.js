@@ -165,6 +165,14 @@ module.exports = function(grunt) {
     // Parse ArchieML files
     archieml: {
       vignettes: {
+        options: {
+          processFile: function(file) {
+            var md = require('marked');
+
+            file.vignette = md(file.vignette);
+            return file;
+          }
+        },
         files: [{
           src: ['vignettes/*.aml'],
           dest: 'public/data/data.json'
@@ -183,34 +191,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-ftpush');
   grunt.loadNpmTasks('grunt-responsive-images');
-
-  // Include our custom task to parse Archie files
-  grunt.registerMultiTask('archieml', 'Parse ArchieML files.', function() {
-    var archieml = require('archieml');
-
-    this.files.forEach(function(file) {
-      // Filter out files that don't exist
-      var parsed = file.src.filter(function(src) {
-        if (!grunt.file.exists(src)) {
-          grunt.log.warn('Source file "' + src + '" not found.');
-          return false;
-        } else {
-          return true;
-        }
-      })
-      // Parse files
-      .map(function(src) {
-        grunt.log.writeln('Parsing "' + src);
-        return archieml.load(grunt.file.read(src));
-      });
-
-      // Write parsed contents to destination(s)
-      grunt.file.write(file.dest, JSON.stringify(parsed));
-
-      // Save parsed JSON file
-      grunt.log.oklns('Saved parsed ArchieML file(s) as JSON at "' + file.dest + '".');
-    });
-  });
+  grunt.loadNpmTasks('grunt-archieml');
 
   grunt.registerTask('build:images', ['clean:images', 'copy:posters', 'responsive_images'])
 
