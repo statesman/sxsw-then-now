@@ -136,7 +136,7 @@ module.exports = function(grunt) {
           dest: 'public/assets/grid/'
         }]
       },
-      inside: {
+      insideNow: {
         options: {
           sizes: [{
             width: 800
@@ -144,7 +144,20 @@ module.exports = function(grunt) {
         },
         files: [{
           expand: true,
-          src: ['now/*.jpg', 'then/*.jpg'],
+          src: ['now/**.jpg'],
+          cwd: 'photos/',
+          dest: 'public/assets/'
+        }]
+      },
+      insideThen: {
+        options: {
+          sizes: [{
+            width: 800
+          }]
+        },
+        files: [{
+          expand: true,
+          src: ['then/**.jpg'],
           cwd: 'photos/',
           dest: 'public/assets/'
         }]
