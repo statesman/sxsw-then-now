@@ -6,10 +6,10 @@
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <?php
       $meta = array(
-        'title' => 'Search Texas government IT contractor spending',
-        'description' => 'Our database uses sales reports made by vendors to the Department of Information Resources to show how much the government agencies have paid for specific contractors since the beginning of fiscal year 2010.',
-        'thumbnail' => 'http://projects.statesman.com/news/itsac-database/assets/share.png',
-        'url' => 'http://projects.statesman.com/news/itsac-database/',
+        'title' => 'SXSW crash: One Tragic Night. One Year Later.',
+        'description' => 'For many of those who were on or near Red River Street when Rashad Owens plowed into a late-night crowd of music fans, their recollections today are as sensory as they are mental, reminders of an event still felt as much as remembered.',
+        'thumbnail' => 'http://projects.statesman.com/news/sxsw-then-now/assets/share.jpg',
+        'url' => 'http://projects.statesman.com/news/sxsw-then-now/',
         'twitter' => 'statesman'
       );
     ?>
