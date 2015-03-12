@@ -80,7 +80,7 @@
       <?php /*<p class="authors">Reporting: Eric Dexheimer, Ciara O'Rourke, Tony Plohetski, Jeremy Schwartz and Andrea Ball<br />Photography: Jay Janner<br />Videography: Kelly West<br />Presentation: Andrew Chavez</p> */ ?>
 
       <div class="intro-video embed-responsive embed-responsive-16by9">
-        <video id="intro-video" data-uid="intro-video" class="sublime" poster="assets/grid.jpg" data-on-end="stop" data-autoresize="fit" data-youtube-id="sIAMMzcogto" width="1280" height="720" preload style="max-width: 100%;" data-title="Introduction video" data-initial-overlay-visibility="visible"></video>
+        <video id="intro-video" data-uid="intro-video" class="sublime" poster="assets/grid.jpg" data-on-end="stop" data-autoresize="fit" data-youtube-id="OQ6Tw4V5Axo" width="1280" height="720" preload style="max-width: 100%;" data-title="Introduction video" data-initial-overlay-visibility="visible"></video>
       </div>
 
       <p class="lead">For many of those who were on or near Red River Street when Rashad Owens plowed into a late-night crowd of music fans, their recollections today are as sensory as they are mental, reminders of an event still felt as much as remembered.</p>
