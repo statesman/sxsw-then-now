@@ -37,10 +37,10 @@
 
     <link href="dist/style.css" rel="stylesheet">
 
-    <link href='http://fonts.googleapis.com/css?family=Lusitana:400,700' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Merriweather+Sans:400,300,300italic,400italic,700italic,700,800,800italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lusitana:400,700&subset=latin' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic&subset=latin' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather+Sans:400,300,300italic,400italic,700italic,700,800,800italic&subset=latin' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Passion+One&text=OneTragicNht.YL' rel='stylesheet' type='text/css'>
 
     <script type="text/javascript" src="//cdn.sublimevideo.net/js/xlgzbpav.js"></script>
 
@@ -76,8 +76,6 @@
       <h1 class="intro-hed">One Year Later.</h1>
 
       <h2>A car racing through the crowd during SXSW connects people in memories and nightmares</h2>
-
-      <?php /*<p class="authors">Reporting: Eric Dexheimer, Ciara O'Rourke, Tony Plohetski, Jeremy Schwartz and Andrea Ball<br />Photography: Jay Janner<br />Videography: Kelly West<br />Presentation: Andrew Chavez</p> */ ?>
 
       <div class="intro-video embed-responsive embed-responsive-16by9">
         <video id="intro-video" data-uid="intro-video" class="sublime" poster="assets/grid.jpg" data-on-end="stop" data-autoresize="fit" data-youtube-id="OQ6Tw4V5Axo" width="1280" height="720" preload style="max-width: 100%;" data-title="Introduction video" data-initial-overlay-visibility="visible"></video>
@@ -165,6 +163,20 @@
           </div>
         </div>
       <?php endforeach; ?>
+    </div>
+
+    <div id="credits">
+      <h3>Project contributors</h3>
+      <ul class="list-inline">
+        <li><strong>Reporting:</strong> Eric Dexheimer, Ciara O'Rourke, Tony Plohetski, Jeremy Schwartz and Andrea Ball</li>
+        <li><strong>Photography:</strong> Jay Janner</li>
+        <li><strong>Videography:</strong> James Gregg, Reshma Kirpalani, Efren Salinas and Kelly West</li>
+        <li><strong>Project editor:</strong> Tony Plohetski</li>
+        <li><strong>Photo editor:</strong> James Gregg</li>
+        <li><strong>Copy editors:</strong> Chloe Gonzales and Gabrielle Mu&ntilde;oz</li>
+        <li><strong>Online presentation:</strong> Andrew Chavez</li>
+        <li><strong>Print presentation:</strong> Scott Ladd</li>
+      </ul>
     </div>
 
     <div class="clearfix" id="ads">
