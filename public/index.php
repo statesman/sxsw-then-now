@@ -42,7 +42,7 @@
     <link href='http://fonts.googleapis.com/css?family=Merriweather+Sans:400,300,300italic,400italic,700italic,700,800,800italic&subset=latin' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Passion+One&text=OneTragicNht.YL' rel='stylesheet' type='text/css'>
 
-    <script type="text/javascript" src="//cdn.sublimevideo.net/js/xlgzbpav.js"></script>
+    <script type="text/javascript" src="//projects.statesman.com/news/sxsw-then-now/dist/js/xlgzbpav.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
