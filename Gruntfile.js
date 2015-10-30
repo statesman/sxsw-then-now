@@ -212,4 +212,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', ['jshint', 'clean:css', 'clean:js', 'clean:fonts', 'archieml', 'copy:fonts', 'less', 'requirejs']);
 
+  grunt.registerTask('prod', ['default','ftpush:prod']);
+
 };
